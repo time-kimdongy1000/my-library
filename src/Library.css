@@ -1,0 +1,69 @@
+.library {
+  min-height: 100vh;
+  padding: 60px 40px 80px;
+}
+
+.library-title {
+  margin: 0 0 50px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.bookshelf {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 40px 30px;
+  background: #6b4630;
+  border-radius: 8px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    inset 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.shelf {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px 20px 0;
+  border-bottom: 24px solid #42291d;
+  box-shadow: 0 8px 0 #2f1d14;
+}
+
+.book {
+  width: 170px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.book:hover {
+  transform: translateY(-12px);
+  filter: brightness(1.05);
+}
+
+.book-cover {
+  display: block;
+  width: 170px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.book h2 {
+  margin: 12px 0 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5eee3;
+}
+
+.book p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #d8c9ba;
+}

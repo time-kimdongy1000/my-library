@@ -1,0 +1,135 @@
+.book-detail {
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 70px 30px;
+}
+
+/* 책 제목 */
+.book-detail > h1 {
+  margin-bottom: 5px;
+  font-size: 42px;
+}
+
+/* 작가 */
+.book-detail > p {
+  margin: 0 0 50px;
+  text-align: right;
+  color: #766b63;
+}
+
+/* 책 표지 */
+.detail-cover {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin: 0 auto 50px;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 독후감 + 목차 */
+.book-content {
+  display: grid;
+  grid-template-columns: minmax(0, 800px) 200px;
+  gap: 50px;
+  align-items: start;
+}
+
+/* 독후감 본문 */
+.book-detail article {
+  padding: 50px;
+  background: #fffdf8;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  line-height: 1.9;
+}
+
+.book-detail article h1 {
+  margin-top: 0;
+  font-size: 32px;
+}
+
+.book-detail article h2 {
+  margin-top: 45px;
+  font-size: 25px;
+}
+
+.book-detail article p {
+  margin: 18px 0;
+}
+
+.book-detail article strong {
+  font-weight: 700;
+}
+
+/* 목차 */
+.table-of-contents {
+  position: sticky;
+  top: 30px;
+
+  padding: 20px;
+
+  background: #fffdf8;
+  border-left: 3px solid #6b4630;
+}
+
+.table-of-contents h2 {
+  margin: 0 0 15px;
+  font-size: 22px;
+}
+
+.table-of-contents ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.table-of-contents li {
+  margin: 8px 0;
+}
+
+.table-of-contents a {
+  color: #4f4640;
+  text-decoration: none;
+}
+
+.table-of-contents a:hover {
+  text-decoration: underline;
+}
+
+/* 하위 제목 */
+.toc-level-3 {
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.book-detail article h2,
+.book-detail article h3 {
+  scroll-margin-top: 30px;
+}
+
+
+/* 모바일 */
+@media (max-width: 900px) {
+
+  .book-detail {
+    padding: 40px 20px;
+  }
+
+  .book-content {
+    display: block;
+  }
+
+  .table-of-contents {
+    position: static;
+    margin-bottom: 30px;
+  }
+
+  .book-detail article {
+    padding: 30px 25px;
+  }
+
+  .detail-cover {
+    width: 220px;
+  }
+}
