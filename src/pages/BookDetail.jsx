@@ -104,7 +104,8 @@ function BookDetail({ language, onLanguageChange }) {
     
 
     if(!book){
-        return <h1>책을 찾을 수 없습니다.</h1>
+        const missingBookLabel = { ko: '책을 찾을 수 없습니다.', ja: '本が見つかりません。', en: 'Book not found.' }[language]
+        return <h1 lang={language}>{missingBookLabel}</h1>
     }
 
       const localizedBook = book.translations?.[language] ?? book
@@ -252,14 +253,9 @@ function BookDetail({ language, onLanguageChange }) {
                         onClick={(e) => {
                             e.preventDefault()
                             const target = document.getElementById(heading.id)
-                            console.log('목차 클릭:', heading.id, target)
-
                             if (target) {
 
                                 const y = target.getBoundingClientRect().top + window.scrollY - 30
-
-                                console.log('스크롤 위치:', y)
-
 
                                 window.scrollTo({
                                     top: y,

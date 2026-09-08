@@ -4,10 +4,16 @@ const languages = [
   { code: 'en', label: 'English' },
 ]
 
+const selectorLabel = {
+  ko: '언어 선택',
+  ja: '言語を選択',
+  en: 'Choose language',
+}
+
 export default function LanguageSelector({ language, onLanguageChange }) {
   return (
     <div className="library-toolbar">
-      <div className="language-selector" role="group" aria-label="언어 선택">
+      <div className="language-selector" role="group" aria-label={selectorLabel[language] ?? selectorLabel.ko}>
         {languages.map(({ code, label }) => (
           <button
             key={code}

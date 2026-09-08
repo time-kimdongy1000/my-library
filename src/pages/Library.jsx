@@ -5,9 +5,9 @@ import { books } from '../data/book'
 import '../Library.css'
 
 const labels = {
-  ko: { hint: '책등을 눌러 한 권을 꺼내 보세요.', close: '책 다시 꽂기', about: '이 책의 이야기', read: '독후감 읽기', again: '표지를 한 번 더 누르면 독후감으로 이어집니다.', pick: '책 꺼내기' },
-  ja: { hint: '背表紙を押して、一冊手に取ってみてください。', close: '本棚に戻す', about: 'この本のあらすじ', read: '感想を読む', again: '表紙をもう一度押すと、読書感想に進みます。', pick: '本を手に取る' },
-  en: { hint: 'Choose a spine. Take a book off the shelf.', close: 'Put book back', about: 'About the story', read: 'Read my review', again: 'Select the cover once more to read my thoughts.', pick: 'Take off the shelf' },
+  ko: { title: '나의 서가', hint: '책등을 눌러 한 권을 꺼내 보세요.', close: '책 다시 꽂기', about: '이 책의 이야기', read: '독후감 읽기', again: '표지를 한 번 더 누르면 독후감으로 이어집니다.', pick: '책 꺼내기' },
+  ja: { title: '私の本棚', hint: '背表紙を押して、一冊手に取ってみてください。', close: '本棚に戻す', about: 'この本のあらすじ', read: '感想を読む', again: '表紙をもう一度押すと、読書感想に進みます。', pick: '本を手に取る' },
+  en: { title: 'My Library', hint: 'Choose a spine. Take a book off the shelf.', close: 'Put book back', about: 'About the story', read: 'Read my review', again: 'Select the cover once more to read my thoughts.', pick: 'Take off the shelf' },
 }
 
 function BookPreview({ book, language, onLanguageChange, origin, onClose }) {
@@ -84,7 +84,7 @@ export default function Library({ language, onLanguageChange }) {
   return (
     <div className="library">
       <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
-      <h1 className="library-title">My Library</h1>
+      <h1 className="library-title" lang={language}>{copy.title}</h1>
       <p className="shelf-instruction" lang={language}>{copy.hint}</p>
       <div className="bookshelf">
         <div className="shelf spine-shelf">
