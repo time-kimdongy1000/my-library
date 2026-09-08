@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate:content": "node scripts/validate-content.mjs",
+    "generate:previews": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-social-previews.ps1",
+    "build": "npm run validate:content && vite build && node scripts/generate-book-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
