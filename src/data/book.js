@@ -7,6 +7,7 @@ export const books =
         title   : "밤의 괴물",
         author  : "스미노 요루",
         cover   : at_night_i_become_a_monster,
+        reviewedAt: '2026-08-22',
         spineColor: '#23475b',
         translations: {
             ko: {
