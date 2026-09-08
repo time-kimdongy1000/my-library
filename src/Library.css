@@ -67,3 +67,82 @@
   font-size: 14px;
   color: #d8c9ba;
 }
+
+.library-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1280px;
+  margin: 0 auto 24px;
+}
+
+.language-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #d8c9ba;
+  border-radius: 12px;
+  background: #f5eee3;
+}
+
+.language-button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #6b4630;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.language-button:hover {
+  background: #e8dbcb;
+}
+
+.language-button[aria-pressed='true'] {
+  background: #6b4630;
+  color: #fff;
+}
+
+.language-button:focus-visible {
+  outline: 2px solid #42291d;
+  outline-offset: 2px;
+}
+
+.library .book:lang(ja),
+.book-detail > h1:lang(ja),
+.book-detail > p:lang(ja),
+.language-button:lang(ja) {
+  font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+
+.library .book:lang(en),
+.book-detail > h1:lang(en),
+.book-detail > p:lang(en),
+.language-button:lang(en) {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+}
+
+.library .book:lang(ja) h2,
+.library .book:lang(en) h2 {
+  line-height: 1.5;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.library .book:lang(ja) p,
+.library .book:lang(en) p {
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .library {
+    padding: 24px 16px 60px;
+  }
+
+  .language-button {
+    padding-inline: 12px;
+  }
+}

@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { books } from '../data/book'
 import ReactMarkdown from 'react-markdown'
+import LanguageSelector from '../LanguageSelector'
 
 import '../BookDetail.css'
 
@@ -23,7 +24,12 @@ function createHeadingId(text) {
         .replace(/\s+/g, '-')
 }
 
-function BookDetail() {
+function BookDetail({ language, onLanguageChange }) {
+    const backToLibraryLabel = {
+        ko: '서가로',
+        ja: '本棚へ',
+        en: 'Back to library',
+    }[language] ?? '서가로'
   
     const { id } = useParams()
     const book = books.find((book) => book.id === id)
@@ -33,7 +39,12 @@ function BookDetail() {
         return <h1>책을 찾을 수 없습니다.</h1>
     }
 
-      const review = reviews[`../data/reviews/${id}.md`]
+      const localizedBook = book.translations?.[language] ?? book
+      const originalReview = reviews[`../data/reviews/${id}.md`] ?? ''
+      const translatedReview = reviews[`../data/reviews/${id}.${language}.md`]
+      const review = translatedReview ?? originalReview
+      const reviewLanguage = translatedReview ? language : 'ko'
+      const contentsLabel = { ko: '목차', ja: '目次', en: 'Contents' }[language] ?? '목차'
 
       const headings = review.split('\n')
                              .filter((line) => line.startsWith('## ') || line.startsWith('### '))
@@ -56,15 +67,16 @@ function BookDetail() {
     return (
 
         <div className='book-detail'>
-            <h1>{book.title}</h1>
-            <p>{book.author}</p>
-            <img src={book.cover} alt={book.title} className='detail-cover'/>
+            <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
+            <h1 lang={language}>{localizedBook.title}</h1>
+            <p lang={language}>{localizedBook.author}</p>
+            <img src={book.cover} alt={localizedBook.title} className='detail-cover'/>
 
            
 
         <div className='book-content'>
 
-            <article>
+            <article lang={reviewLanguage}>
                 <ReactMarkdown
                     components={{
                         h2: ({ children }) => {
@@ -94,8 +106,9 @@ function BookDetail() {
             </article>
 
 
-    <nav className='table-of-contents'>
-        <h2>목차</h2>
+    <aside className='book-sidebar'>
+    <nav className='table-of-contents' lang={reviewLanguage}>
+        <h2 lang={language}>{contentsLabel}</h2>
 
         <ul>
             {headings.map((heading) => (
@@ -130,6 +143,15 @@ function BookDetail() {
             ))}
         </ul>
     </nav>
+        <Link
+            to="/"
+            className="back-to-library"
+            lang={language}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+        >
+            <span aria-hidden="true">←</span> {backToLibraryLabel}
+        </Link>
+    </aside>
 
 </div>
 
