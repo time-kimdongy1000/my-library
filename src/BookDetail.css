@@ -164,6 +164,116 @@
   font-family: 'Lora', Georgia, 'Times New Roman', serif;
 }
 
+.share-card {
+  padding: 17px 15px 12px;
+  border: 1px solid #dfd4c5;
+  border-radius: 10px;
+  background: #fffdf8;
+  box-shadow: 0 6px 18px rgba(66, 41, 29, 0.08);
+}
+
+.share-card h2 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #574a41;
+}
+
+.share-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.share-actions button {
+  display: flex;
+  min-width: 48px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+  border: 0;
+  background: transparent;
+  color: #5a4638;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.share-actions button:hover {
+  background: transparent;
+}
+
+.share-actions button:hover .share-icon {
+  background: #e5d8c8;
+  transform: translateY(-2px);
+}
+
+.share-actions button:focus-visible {
+  outline: 2px solid #6b4630;
+  outline-offset: 2px;
+}
+
+.share-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #efe5d8;
+  color: #513b2d;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.share-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.share-actions button:first-child .share-icon svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.share-x svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.share-actions button .share-x {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.share-actions button:hover .share-x {
+  background: #292929;
+}
+
+.share-status {
+  min-height: 16px;
+  margin: 8px 0 0;
+  color: #766b63;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.share-card:lang(ja) {
+  font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+
+.share-card:lang(en) {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+}
+
 /* 하위 제목 */
 .toc-level-3 {
   padding-left: 20px;
