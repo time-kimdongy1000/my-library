@@ -150,6 +150,20 @@
 /* A shelf of spines, with a book that can be taken out. */
 .library .library-title { margin-bottom: 14px; }
 .shelf-instruction { text-align: center; color: #786b5f; margin: 0 0 38px; font-size: 14px; }
+.visitor-count {
+  width: fit-content;
+  margin: -24px auto 30px;
+  padding: 6px 12px;
+  border: 1px solid rgba(107, 70, 48, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.56);
+  color: #8a7766;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.visitor-count:lang(ja) { font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif; }
+.visitor-count:lang(en) { font-family: 'Lora', Georgia, serif; }
 .library .bookshelf { padding: 44px 32px 28px; background: repeating-linear-gradient(0deg, transparent 0 7px, #ffffff03 7px 8px), #68442e; }
 .library .spine-shelf { gap: 10px; min-height: 350px; padding: 16px 24px 0; background: linear-gradient(90deg, #271a1466, transparent 40%), linear-gradient(#291c1444, transparent 35%); perspective: 1100px; }
 .book-spine {

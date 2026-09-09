@@ -186,3 +186,18 @@ https://pagesremain.com/og/공유이미지.png
 ```
 
 카카오톡에 이전 이미지가 계속 보이면 카카오 개발자 도구에서 해당 상세 주소의 Open Graph 캐시를 초기화합니다.
+
+## Supabase 방문 통계 설정
+
+프로젝트 루트의 `.env.example`을 복사해 `.env`를 만들고 다음 두 공개 값을 입력합니다.
+
+```env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+```
+
+`service_role`, Secret key와 데이터베이스 비밀번호는 브라우저 코드에 넣지 않습니다. `.env`는 Git에서 제외됩니다.
+
+Supabase Dashboard의 SQL Editor에서 `supabase/schema.sql` 전체를 실행하면 방문자와 책별 조회 테이블, 집계 함수와 접근 권한이 생성됩니다. 일별 중복 집계는 `Asia/Seoul` 날짜를 기준으로 합니다.
+
+Cloudflare Pages로 배포할 때는 Workers & Pages의 해당 프로젝트에서 **Settings → Environment variables**로 이동해 `VITE_SUPABASE_URL`과 `VITE_SUPABASE_PUBLISHABLE_KEY`를 Production 환경에도 등록합니다. 환경 변수를 저장한 뒤 새 배포를 실행해야 운영 사이트에 적용됩니다.

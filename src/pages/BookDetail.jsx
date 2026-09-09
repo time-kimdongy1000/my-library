@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { books } from '../data/book'
 import ReactMarkdown from 'react-markdown'
 import LanguageSelector from '../LanguageSelector'
+import { getBookViewCount, recordBookView } from '../lib/analytics'
 
 import '../BookDetail.css'
 
@@ -49,6 +50,7 @@ function BookDetail({ language, onLanguageChange }) {
     const [shareStatus, setShareStatus] = useState('')
     const articleRef = useRef(null)
     const [readingProgress, setReadingProgress] = useState(0)
+    const [viewCount, setViewCount] = useState(null)
     const [readingSize, setReadingSize] = useState(() => {
         try {
             const savedSize = window.localStorage.getItem('my-library-reading-size')
@@ -72,9 +74,26 @@ function BookDetail({ language, onLanguageChange }) {
         ja: { progress: '読書の進捗', published: '投稿日', readingTime: '読了目安', minute: '分', textSize: '文字サイズ', small: '小さく', normal: '標準', large: '大きく' },
         en: { progress: 'Reading progress', published: 'Published', readingTime: 'Reading time', minute: ' min', textSize: 'Text size', small: 'Small', normal: 'Default', large: 'Large' },
     }[language]
+    const viewLabel = { ko: '조회', ja: '閲覧', en: 'views' }[language]
   
     const { id } = useParams()
     const book = books.find((book) => book.id === id)
+
+    useEffect(() => {
+        let isCurrent = true
+
+        const loadViewCount = async () => {
+            await recordBookView(id)
+            const count = await getBookViewCount(id)
+            if (isCurrent && typeof count === 'number') setViewCount(count)
+        }
+
+        loadViewCount()
+
+        return () => {
+            isCurrent = false
+        }
+    }, [id])
 
     useEffect(() => {
         const updateReadingProgress = () => {
@@ -208,6 +227,10 @@ function BookDetail({ language, onLanguageChange }) {
                     <span>{readingLabels.published} <time dateTime={book.reviewedAt}>{publishedDate}</time></span>
                     <span aria-hidden="true">·</span>
                     <span>{readingLabels.readingTime} {readingMinutes}{readingLabels.minute}</span>
+                    {viewCount !== null && <>
+                        <span aria-hidden="true">·</span>
+                        <span>{viewCount} {viewLabel}</span>
+                    </>}
                 </div>
                 <ReactMarkdown
                     components={{
