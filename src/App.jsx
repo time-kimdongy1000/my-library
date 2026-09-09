@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Library from './pages/Library'
 import BookDetail from './pages/BookDetail'
 import { books } from './data/book'
+import { getSiteVisitorCount, recordSiteVisit } from './lib/analytics'
 
 const pageLabels = {
   ko: { library: '나의 서가', review: '나의 독서 기록', missing: '책을 찾을 수 없습니다' },
@@ -30,12 +31,29 @@ function PageMetadata({ language }) {
 
 function App() {
   const [language, setLanguage] = useState('ko')
+  const [visitorCount, setVisitorCount] = useState(null)
+
+  useEffect(() => {
+    let isCurrent = true
+
+    const trackVisitor = async () => {
+      await recordSiteVisit()
+      const count = await getSiteVisitorCount()
+      if (isCurrent && typeof count === 'number') setVisitorCount(count)
+    }
+
+    trackVisitor()
+
+    return () => {
+      isCurrent = false
+    }
+  }, [])
 
   return (
     <>
       <PageMetadata language={language} />
       <Routes>
-        <Route path="/" element={<Library language={language} onLanguageChange={setLanguage} />} />
+        <Route path="/" element={<Library language={language} onLanguageChange={setLanguage} visitorCount={visitorCount} />} />
         <Route path="/book/:id" element={<BookDetail language={language} onLanguageChange={setLanguage} />} />
       </Routes>
     </>

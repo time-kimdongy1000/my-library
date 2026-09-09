@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import LanguageSelector from '../LanguageSelector'
 import { books } from '../data/book'
-import { getSiteVisitorCount, recordSiteVisit } from '../lib/analytics'
 import '../Library.css'
 
 const labels = {
@@ -85,26 +84,9 @@ function BookPreview({ book, language, onLanguageChange, origin, onClose }) {
   )
 }
 
-export default function Library({ language, onLanguageChange }) {
+export default function Library({ language, onLanguageChange, visitorCount }) {
   const [selection, setSelection] = useState(null)
-  const [visitorCount, setVisitorCount] = useState(null)
   const copy = labels[language] ?? labels.ko
-
-  useEffect(() => {
-    let isCurrent = true
-
-    const loadVisitorCount = async () => {
-      await recordSiteVisit()
-      const count = await getSiteVisitorCount()
-      if (isCurrent && typeof count === 'number') setVisitorCount(count)
-    }
-
-    loadVisitorCount()
-
-    return () => {
-      isCurrent = false
-    }
-  }, [])
 
   return (
     <div className="library">
