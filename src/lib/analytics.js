@@ -2,7 +2,7 @@ import { getSupabase } from './supabase'
 
 const visitorStorageKey = 'pages-remain-visitor-id'
 
-function getVisitorId() {
+export function getVisitorId() {
   try {
     const savedId = window.localStorage.getItem(visitorStorageKey)
     if (savedId) return savedId

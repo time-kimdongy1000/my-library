@@ -201,3 +201,26 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 Supabase Dashboard의 SQL Editor에서 `supabase/schema.sql` 전체를 실행하면 방문자와 책별 조회 테이블, 집계 함수와 접근 권한이 생성됩니다. 일별 중복 집계는 `Asia/Seoul` 날짜를 기준으로 합니다.
 
 Cloudflare Pages로 배포할 때는 Workers & Pages의 해당 프로젝트에서 **Settings → Environment variables**로 이동해 `VITE_SUPABASE_URL`과 `VITE_SUPABASE_PUBLISHABLE_KEY`를 Production 환경에도 등록합니다. 환경 변수를 저장한 뒤 새 배포를 실행해야 운영 사이트에 적용됩니다.
+
+## Supabase 댓글 설정
+
+댓글 기능을 처음 연결하거나 댓글 방어 규칙을 갱신할 때 Supabase Dashboard의 SQL Editor에서 `supabase/comments.sql` 전체를 실행합니다. 이 파일은 댓글 테이블과 조회·작성·삭제 RPC, 비밀번호 해시, 요청 제한과 접근 권한을 구성합니다.
+
+SQL 실행이 성공하면 저장하지 않을 새 SQL Editor 쿼리를 열고 다음 명령으로 관리자 마스터 비밀번호를 설정합니다.
+
+```sql
+select private.set_comment_admin_password('본인만 아는 관리자 비밀번호');
+```
+
+관리자 비밀번호는 UTF-8 기준 12~72바이트로 설정합니다. 실제 비밀번호를 저장소, `.env`, 공유 SQL 스니펫 또는 브라우저 코드에 기록하지 않습니다. 비밀번호를 변경할 때도 같은 명령을 새 비밀번호로 다시 실행하면 됩니다.
+
+댓글의 삭제 입력란에는 다음 두 비밀번호 중 하나를 사용할 수 있습니다.
+
+- 댓글 작성자가 등록할 때 지정한 삭제 비밀번호
+- Supabase에서 설정한 관리자 마스터 비밀번호
+
+삭제가 승인되면 행을 즉시 제거하지 않고 `is_hidden`을 `true`로 바꿉니다. 숨긴 댓글은 사이트의 댓글 조회 결과에서 제외되며, 필요하면 Supabase Table Editor에서 기록을 확인하거나 복구할 수 있습니다.
+
+댓글 테이블의 직접 접근 권한은 차단되어 있습니다. 브라우저에는 `get_comments`, `create_comment`, `delete_comment` RPC 실행 권한만 있으며 비밀번호 해시는 어떤 응답에도 포함되지 않습니다.
+
+서버에서는 댓글 생성을 같은 방문자 기준 30초에 한 번, 24시간에 10개로 제한합니다. 전체 사이트 기준으로는 1분에 30개, 24시간에 500개까지 허용하며 같은 독후감에 동일한 내용을 10분 안에 반복 등록할 수 없습니다. 삭제 비밀번호 실패는 같은 방문자 기준 10분에 5회, 같은 댓글 기준 10분에 20회까지 허용합니다. 방문자 식별자는 브라우저에서 생성되므로 이 제한은 기본 방어선이며, 실제 자동화 공격이 발생하면 Cloudflare Turnstile과 Supabase Edge Function의 서버 검증을 추가합니다.

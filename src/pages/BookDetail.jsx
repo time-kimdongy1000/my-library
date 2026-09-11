@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { books } from '../data/book'
 import ReactMarkdown from 'react-markdown'
 import LanguageSelector from '../LanguageSelector'
+import CommentSection from '../components/CommentSection'
 import { getBookViewCount, recordBookView } from '../lib/analytics'
 
 import '../BookDetail.css'
@@ -222,7 +223,8 @@ function BookDetail({ language, onLanguageChange }) {
 
         <div className='book-content'>
 
-            <article ref={articleRef} lang={reviewLanguage} className={`reading-${readingSize}`}>
+            <div className="reading-column">
+            <article ref={articleRef} lang={reviewLanguage} className={`review-article reading-${readingSize}`}>
                 <div className="review-meta" lang={language}>
                     <span>{readingLabels.published} <time dateTime={book.reviewedAt}>{publishedDate}</time></span>
                     <span aria-hidden="true">·</span>
@@ -259,6 +261,8 @@ function BookDetail({ language, onLanguageChange }) {
                 {review}
                 </ReactMarkdown>
             </article>
+            <CommentSection key={book.id} bookId={book.id} language={language} />
+            </div>
 
 
     <aside className='book-sidebar'>
