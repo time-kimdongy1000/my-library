@@ -6,6 +6,32 @@
     "cover": "/covers/At-Night-I-Become-a-Monster.png",
     "reviewedAt": "2026-08-22",
     "spineColor": "#23475b",
+    "spineStyles": {
+      "ko": {
+        "titleSize": "19px",
+        "titleLetterSpacing": "2px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "12px",
+        "padding": "14px 4px"
+      },
+      "ja": {
+        "titleSize": "18px",
+        "titleLetterSpacing": "1.5px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "12px",
+        "padding": "14px 4px"
+      },
+      "en": {
+        "titleSize": "11.5px",
+        "titleLetterSpacing": "0.1px",
+        "authorSize": "9px",
+        "authorLetterSpacing": "0",
+        "gap": "10px",
+        "padding": "10px 4px"
+      }
+    },
     "social": {
       "image": "/og/at-night-i-become-a-monster.png",
       "label": "나의 독서 기록",
@@ -27,6 +53,64 @@
         "title": "At Night, I Become a Monster",
         "author": "Yoru Sumino",
         "synopsis": "Every night, Adachi turns into a monster. Returning to school for forgotten homework, he meets Yano, a girl shunned by their classmates. He ignores her by day, but at night they begin to talk. Which version of him is real? An unlikely encounter becomes a story about the faces we show others and what lies beneath them."
+      }
+    }
+  },
+  {
+    "id": "i_want_to_eat_your_pancreas",
+    "title": "너의 췌장을 먹고 싶어",
+    "author": "스미노 요루",
+    "cover": "/covers/i_want_to_eat_your_pancreas.png",
+    "reviewedAt": "2026-09-11",
+    "spineColor": "#c58f96",
+    "spineTopColor": "#e6aeb9",
+    "spineStyles": {
+      "ko": {
+        "titleSize": "13px",
+        "titleLetterSpacing": "0.5px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "8px",
+        "padding": "10px 4px"
+      },
+      "ja": {
+        "titleSize": "15px",
+        "titleLetterSpacing": "1px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "10px",
+        "padding": "12px 4px"
+      },
+      "en": {
+        "titleSize": "10px",
+        "titleLetterSpacing": "0.1px",
+        "authorSize": "9px",
+        "authorLetterSpacing": "0",
+        "gap": "8px",
+        "padding": "10px 4px"
+      }
+    },
+    "social": {
+      "image": "/og/i-want-to-eat-your-pancreas.png",
+      "label": "나의 독서 기록",
+      "description": "사쿠라와 하루키를 따라 하루의 가치와 타인에게 다가가는 용기를 생각한 개인 독서 기록.",
+      "question": ["오늘 하루의 가치는,", "무엇으로 정해지는가?"]
+    },
+    "translations": {
+      "ko": {
+        "title": "너의 췌장을 먹고 싶어",
+        "author": "스미노 요루",
+        "synopsis": "타인에게 관심을 두지 않고 살아가던 하루키는 병원에서 우연히 한 권의 문고를 발견한다. 그것은 같은 반의 밝고 인기 많은 소녀 사쿠라가 췌장병으로 남은 삶을 기록한 비밀 일기였다. 비밀을 공유하게 된 두 사람은 사쿠라에게 남은 시간을 함께 보내며 서로의 세계를 조금씩 바꾸어 간다. 죽음이 가까이 있다는 사실을 통해 오늘을 살아가는 의미와 사람 사이의 관계를 돌아보게 하는 이야기."
+      },
+      "ja": {
+        "title": "君の膵臓をたべたい",
+        "author": "住野よる",
+        "synopsis": "他人に関心を持たずに生きてきた春樹は、病院で偶然一冊の文庫本を拾う。それは、明るく人気者のクラスメイト・桜良が、膵臓の病気と残された時間を綴った秘密の日記だった。秘密を共有することになった二人は、桜良に残された日々をともに過ごしながら、互いの世界を少しずつ変えていく。死が身近にあるからこそ見えてくる、生きることの意味と人とのつながりを描いた物語。"
+      },
+      "en": {
+        "title": "I Want to Eat Your Pancreas",
+        "author": "Yoru Sumino",
+        "synopsis": "Haruki has always kept other people at a distance. Then, at a hospital, he happens upon a journal belonging to Sakura, his bright and popular classmate, and learns that she is living with a terminal pancreatic illness. Bound by her secret, the two spend her remaining days together and gradually change the way each sees the world. Their unlikely friendship becomes a story about what it means to live and to let another person into your life."
       }
     }
   }

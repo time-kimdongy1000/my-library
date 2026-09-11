@@ -9,12 +9,12 @@
 - 운영 주소: <https://pagesremain.com>
 - Git 원격 저장소: <https://github.com/time-kimdongy1000/my-library.git>
 - 기본 브랜치: `main`
-- 이 문서 작성 시 기준 커밋: `bca5117` (`Track visits from every entry route`)
+- 이 문서는 두 번째 책 《너의 췌장을 먹고 싶어》를 추가한 시점까지 갱신됨
 - 배포: GitHub `main` 푸시와 연결된 Cloudflare Pages 자동 배포
 - 기술: React 19, Vite 8, React Router, React Markdown, Supabase JavaScript Client
 - 지원 언어: 한국어(`ko`), 일본어(`ja`), 영어(`en`)
 
-현재 등록된 책은 스미노 요루의 《밤의 괴물》 한 권이다. 책 수는 사용자의 독서와 독후감 작성 속도에 맞춰 천천히 늘린다. 기능 수를 늘리기 위해 독서를 서두르지 않는다.
+현재 등록된 책은 스미노 요루의 《밤의 괴물》과 《너의 췌장을 먹고 싶어》 두 권이다. 책 수는 사용자의 독서와 독후감 작성 속도에 맞춰 천천히 늘린다. 기능 수를 늘리기 위해 독서를 서두르지 않는다.
 
 ## 2. 제품 방향과 확정된 결정
 

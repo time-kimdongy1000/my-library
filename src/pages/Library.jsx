@@ -100,10 +100,21 @@ export default function Library({ language, onLanguageChange, visitorCount }) {
         <div className="shelf spine-shelf">
           {books.map((book) => {
             const localized = book.translations?.[language] ?? book
+            const spineStyle = book.spineStyles?.[language] ?? {}
             return (
               <button key={book.id} type="button"
                 className={`book-spine${selection?.book.id === book.id ? ' is-selected' : ''}`}
-                lang={language} style={{ '--spine-color': book.spineColor ?? '#24465a', '--spine-cover': `url("${book.cover}")` }}
+                lang={language} style={{
+                  '--spine-color': book.spineColor ?? '#24465a',
+                  '--spine-cover': `url("${book.cover}")`,
+                  '--spine-top-color': book.spineTopColor ?? 'transparent',
+                  '--spine-title-size': spineStyle.titleSize,
+                  '--spine-title-letter-spacing': spineStyle.titleLetterSpacing,
+                  '--spine-author-size': spineStyle.authorSize,
+                  '--spine-author-letter-spacing': spineStyle.authorLetterSpacing,
+                  '--spine-paper-gap': spineStyle.gap,
+                  '--spine-paper-padding': spineStyle.padding,
+                }}
                 aria-label={`${localized.title} — ${localized.author} · ${copy.pick}`} aria-haspopup="dialog"
                 onClick={(event) => {
                   const rect = event.currentTarget.getBoundingClientRect()

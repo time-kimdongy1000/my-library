@@ -204,7 +204,9 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(90deg, #00000030, #ffffff18 12%, transparent 25%, transparent 78%, #00000026);
+  background:
+    linear-gradient(180deg, var(--spine-top-color, transparent) 0 24px, transparent 24px),
+    linear-gradient(90deg, #00000030, #ffffff18 12%, transparent 25%, transparent 78%, #00000026);
   box-shadow: inset 1px 0 #ffffff35, inset -1px 0 #00000030;
   pointer-events: none;
 }
@@ -221,29 +223,29 @@
   flex: 1;
   min-height: 0;
   width: 100%;
-  gap: 12px;
-  padding: 14px 4px;
+  gap: var(--spine-paper-gap, 12px);
+  padding: var(--spine-paper-padding, 14px 4px);
   background: #f4f0e6;
 }
 .spine-title {
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: var(--spine-title-size, 19px);
+  font-weight: 700;
+  letter-spacing: var(--spine-title-letter-spacing, 2px);
   line-height: 1.2;
   white-space: nowrap;
 }
 .spine-author {
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-size: 10px;
-  letter-spacing: .5px;
+  font-size: var(--spine-author-size, 10px);
+  letter-spacing: var(--spine-author-letter-spacing, .5px);
   line-height: 1.2;
   white-space: nowrap;
 }
-.book-spine:lang(en) .spine-paper { gap: 10px; padding-block: 10px; }
-.book-spine:lang(en) .spine-title { text-orientation: mixed; font-size: 11.5px; letter-spacing: .1px; }
-.book-spine:lang(en) .spine-author { text-orientation: mixed; font-size: 9px; letter-spacing: 0; }
+.book-spine:lang(en) .spine-title { text-orientation: mixed; }
+.book-spine:lang(en) .spine-author { text-orientation: mixed; }
 .book-preview { position: fixed; inset: 0; margin: auto; border: 0; padding: 28px; width: 100vw; height: 100dvh; max-width: none; max-height: none; overflow-y: auto; background: transparent; color: #302b25; }
 .book-preview[open] { display: grid; align-items: center; justify-items: center; }
 .book-preview::backdrop { background: #171c22b8; backdrop-filter: blur(7px); }
