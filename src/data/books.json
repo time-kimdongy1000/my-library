@@ -113,5 +113,63 @@
         "synopsis": "Haruki has always kept other people at a distance. Then, at a hospital, he happens upon a journal belonging to Sakura, his bright and popular classmate, and learns that she is living with a terminal pancreatic illness. Bound by her secret, the two spend her remaining days together and gradually change the way each sees the world. Their unlikely friendship becomes a story about what it means to live and to let another person into your life."
       }
     }
+  },
+  {
+    "id": "look_back",
+    "title": "룩 백",
+    "author": "후지모토 타츠키",
+    "cover": "/covers/look_back.png",
+    "reviewedAt": "2026-10-09",
+    "spineColor": "#91b83e",
+    "spineTopColor": "#d7dc8c",
+    "spineStyles": {
+      "ko": {
+        "titleSize": "19px",
+        "titleLetterSpacing": "2px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "12px",
+        "padding": "14px 4px"
+      },
+      "ja": {
+        "titleSize": "17px",
+        "titleLetterSpacing": "1.5px",
+        "authorSize": "10px",
+        "authorLetterSpacing": "0.5px",
+        "gap": "12px",
+        "padding": "14px 4px"
+      },
+      "en": {
+        "titleSize": "12px",
+        "titleLetterSpacing": "0.2px",
+        "authorSize": "9px",
+        "authorLetterSpacing": "0",
+        "gap": "10px",
+        "padding": "10px 4px"
+      }
+    },
+    "social": {
+      "image": "/og/look-back.png",
+      "label": "나의 독서 기록",
+      "description": "후지노와 쿄모토가 서로의 등을 바라보며 창작을 이어 가는 이유를 돌아본 개인 독서 기록.",
+      "question": ["나는 무엇 때문에,", "오늘도 만드는가?"]
+    },
+    "translations": {
+      "ko": {
+        "title": "룩 백",
+        "author": "후지모토 타츠키",
+        "synopsis": "학교 신문에 4컷 만화를 연재하며 그림 실력을 자랑하던 후지노는 압도적인 재능을 지닌 은둔형 소녀 쿄모토의 작품을 보고 경쟁심과 열등감에 사로잡힌다. 졸업식 날 처음 만난 두 사람은 서로의 그림을 동경해 왔다는 사실을 알게 되고, 함께 만화를 그리며 성장한다. 창작의 기쁨과 고통, 그리고 계속 그리게 하는 힘을 두 소녀의 뒷모습에 담아낸 이야기."
+      },
+      "ja": {
+        "title": "ルックバック",
+        "author": "藤本タツキ",
+        "synopsis": "学年新聞で4コマ漫画を連載し、絵の才能に自信を持っていた藤野は、圧倒的な画力を持つ不登校の少女・京本の作品を目にし、対抗心と劣等感にとらわれる。卒業式の日に初めて出会った二人は、互いの絵に憧れていたことを知り、ともに漫画を描きながら成長していく。創作の喜びと苦しみ、それでも描き続ける力を、二人の少女の背中に託した物語。"
+      },
+      "en": {
+        "title": "Look Back",
+        "author": "Tatsuki Fujimoto",
+        "synopsis": "Fujino takes pride in drawing four-panel manga for her school newspaper until she sees the work of Kyomoto, a reclusive classmate whose extraordinary skill fills her with rivalry and self-doubt. When the two finally meet on graduation day, they discover that each has long admired the other's art and begin creating manga together. Their shared journey becomes a story about the joy and pain of creation—and the force that keeps an artist drawing."
+      }
+    }
   }
 ]
