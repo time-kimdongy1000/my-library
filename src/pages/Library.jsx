@@ -52,7 +52,7 @@ function BookPreview({ book, language, onLanguageChange, origin, onClose }) {
         <div className="preview-layout">
           <div className="preview-book-space">
             <div ref={coverRef} className="preview-book-anchor">
-              <Link to={`/book/${book.id}`} className="preview-cover" aria-label={`${localized.title} — ${copy.read}`}
+              <Link to={`/${language}/book/${book.id}`} className="preview-cover" aria-label={`${localized.title} — ${copy.read}`}
                 onClick={(event) => {
                   if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
                   event.preventDefault()
@@ -62,7 +62,7 @@ function BookPreview({ book, language, onLanguageChange, origin, onClose }) {
                   if (event.target !== event.currentTarget) return
                   if (event.animationName === 'book-return') onClose()
                   if (event.animationName === 'book-enter') {
-                    navigate(`/book/${book.id}`)
+                    navigate(`/${language}/book/${book.id}`)
                     window.scrollTo({ top: 0, behavior: 'instant' })
                   }
                 }}>

@@ -36,7 +36,7 @@
 - 한국어·일본어·영어 버튼
 - 책등 형태의 서가와 책 꺼내기 애니메이션
 - 선택한 책의 기울어진 표지, 현지화된 제목·작가·줄거리
-- 표지를 다시 눌러 `/book/:id`로 이동
+- 표지를 다시 눌러 `/:language/book/:id`로 이동
 - 누적 고유 브라우저 방문자 수 표시
 
 ### 독후감 상세
@@ -55,7 +55,11 @@
 ### 공유 미리보기와 콘텐츠 검증
 
 - 책마다 1200×630 Open Graph 이미지 생성
-- 빌드 시 `/book/책_ID/index.html` 생성
+- 빌드 시 `/ko`, `/ja`, `/en` 서가와 언어별 `/언어/book/책_ID/index.html` 생성
+- 각 언어 페이지에 고유 title, description, canonical, `hreflang`, Open Graph와 JSON-LD 생성
+- `books.json`을 기준으로 `sitemap.xml` 자동 생성
+- `/`와 기존 `/book/:id`는 한국어 대표 주소로 영구 이동
+- 실제 `404.html`을 제공해 존재하지 않는 스캐너 경로가 홈페이지로 200 응답하지 않게 구성
 - 책별 제목·설명·이미지·canonical·X 카드 메타데이터 생성
 - 책 데이터, 표지, 공유 이미지, 세 언어 독후감과 번역 누락 검사
 - 운영 도메인을 `https://pagesremain.com`으로 고정
@@ -85,7 +89,7 @@ my-library/
 ├─ scripts/
 │  ├─ generate-social-previews.ps1    공유 이미지 생성
 │  ├─ validate-content.mjs            책 콘텐츠 정합성 검사
-│  └─ generate-book-pages.mjs         책별 공유 HTML 생성
+│  └─ generate-book-pages.mjs         언어별 정적 HTML과 사이트맵 생성
 ├─ src/
 │  ├─ data/
 │  │  ├─ books.json                   모든 책과 번역 메타데이터
@@ -202,7 +206,9 @@ VITE_SUPABASE_PUBLISHABLE_KEY=
 책별 공유 미리보기는 배포 후 아래 주소로 확인한다.
 
 ```text
-https://pagesremain.com/book/책_ID
+https://pagesremain.com/ko/book/책_ID
+https://pagesremain.com/ja/book/책_ID
+https://pagesremain.com/en/book/책_ID
 https://pagesremain.com/og/공유이미지.png
 ```
 
@@ -251,7 +257,7 @@ https://pagesremain.com/og/공유이미지.png
 2. 독후감 아래 `이 생각과 이어지는 책`과 사용자가 직접 쓴 연결 이유
 3. 브라우저에 읽던 위치를 저장하고 이어 읽기
 4. 연도별 선반
-5. sitemap, `hreflang`, 책·독후감 구조화 데이터, RSS
+5. RSS와 초기 HTML 본문 사전 렌더링
 6. 책이 10권 이상 쌓인 뒤 책과 생각의 관계를 보여주는 독서 지도
 
 화면에 태그 목록을 추가하는 안은 채택하지 않았다. 검색이 필요해지면 태그를 내부 메타데이터로만 사용할 수 있다.

@@ -298,7 +298,7 @@ function BookDetail({ language, onLanguageChange }) {
         </ul>
     </nav>
         <Link
-            to="/"
+            to={`/${language}`}
             className="back-to-library"
             lang={language}
             onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}

@@ -46,7 +46,10 @@ npm run dev
 my-library/
 ├─ public/
 │  ├─ covers/                 책 표지
-│  └─ og/                     공유 미리보기 이미지
+│  ├─ og/                     공유 미리보기 이미지
+│  ├─ 404.html                검색엔진과 방문자용 오류 페이지
+│  ├─ robots.txt              검색 로봇과 사이트맵 안내
+│  └─ _redirects              기존 주소를 한국어 주소로 연결
 ├─ scripts/
 │  ├─ generate-social-previews.ps1
 │  ├─ validate-content.mjs
@@ -168,7 +171,18 @@ npm run lint
 - 세 언어의 독후감 파일
 - 중복되거나 잘못된 책 ID
 
-검사가 끝나면 책마다 `dist/book/책_ID/index.html`이 생성됩니다. 이 HTML에 책별 Open Graph와 X 카드 정보가 들어가므로, 여러 독후감을 공유해도 각 책에 맞는 제목과 이미지가 표시됩니다.
+검사가 끝나면 세 언어의 서가와 책 상세 HTML이 생성됩니다.
+
+```text
+dist/ko/index.html
+dist/ja/index.html
+dist/en/index.html
+dist/ko/book/책_ID/index.html
+dist/ja/book/책_ID/index.html
+dist/en/book/책_ID/index.html
+```
+
+각 HTML에는 언어별 제목과 설명, canonical, `hreflang`, Open Graph, X 카드와 `BlogPosting` 구조화 데이터가 들어갑니다. `dist/sitemap.xml`도 `books.json`을 기준으로 자동 생성됩니다.
 
 완성된 빌드를 직접 확인하려면 다음 명령을 사용합니다.
 
@@ -181,11 +195,23 @@ npm run preview
 배포 후 아래 두 주소가 외부에서 열리는지 확인합니다.
 
 ```text
-https://pagesremain.com/book/책_ID
+https://pagesremain.com/ko/book/책_ID
+https://pagesremain.com/ja/book/책_ID
+https://pagesremain.com/en/book/책_ID
 https://pagesremain.com/og/공유이미지.png
 ```
 
 카카오톡에 이전 이미지가 계속 보이면 카카오 개발자 도구에서 해당 상세 주소의 Open Graph 캐시를 초기화합니다.
+
+## Google 검색 등록
+
+Google Search Console에 `pagesremain.com` 도메인 속성을 등록하고 다음 사이트맵을 제출합니다.
+
+```text
+https://pagesremain.com/sitemap.xml
+```
+
+언어별 대표 주소는 `/ko`, `/ja`, `/en`이며 상세 주소는 `/{언어}/book/{책_ID}`입니다. 기존 `/`와 `/book/{책_ID}` 요청은 한국어 대표 주소로 영구 이동합니다. 새 책을 추가하고 `npm run build`를 실행하면 세 언어의 상세 HTML과 사이트맵이 함께 갱신됩니다.
 
 ## Supabase 방문 통계 설정
 
